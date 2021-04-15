@@ -21,3 +21,52 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
 
 });
+
+const searchDB = () => {
+    inquirer
+    .prompt({
+      name: 'intro',
+      type: 'list',
+      message: 'What would you like to do?',
+      choices: [
+        'View Departments',
+        'View Employees',
+        'View Roles',
+        'Add Department',
+        'Add Employee',
+        'Add Role',
+        'Update employee role',
+        'Exit Program'
+      ],
+    }).then(data => {
+        switch (data.add) {
+            case 'View Departments':
+                viewDepartment();
+                break;
+            case 'View Employees':
+                viewEmployees();
+                break;
+            case 'View Roles':
+                viewRoles();
+                break;
+            case 'Add Department':
+                addDepartment();
+                break;
+            case 'Add Employee':
+                addEmployee();
+                break;
+            case 'Add Role':
+                addRole();
+                break;
+            case 'Update employee role':
+                updateRole();
+                break;
+            case 'Exit Program':
+                exitProgram();
+                break;
+
+
+        }
+
+    })
+}
