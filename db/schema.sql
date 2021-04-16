@@ -5,9 +5,9 @@ CREATE DATABASE employee_db;
 
 CREATE TABLE department (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    name VARCHAR(30)
+    department_names VARCHAR(30)
 )
-CREATE TABLE role (
+CREATE TABLE roles (
     id INT PRIMARY KEY
     title VARCHAR(30) 
     salary DECIMAL 

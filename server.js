@@ -1,6 +1,5 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql');
-const conTable = require('console.table');
 const env = require('dotenv');
 
 
@@ -22,7 +21,28 @@ connection.connect((err) => {
 
 });
 
+
+const viewDepartment = () => {
+    const query = 'SELECT department_names FROM department';
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+        console.table(res);
+    });
+    searchDB();
+}
+
+
+
+
+
+
+
+
+
+
 const searchDB = () => {
+    console.log('Welcome! Make a selection!')
+    console.log('\n')
     inquirer
     .prompt({
       name: 'intro',
@@ -38,8 +58,8 @@ const searchDB = () => {
         'Update employee role',
         'Exit Program'
       ],
-    }).then(data => {
-        switch (data.add) {
+    }).then(res => {
+        switch (res.add) {
             case 'View Departments':
                 viewDepartment();
                 break;
