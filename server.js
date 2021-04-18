@@ -19,7 +19,8 @@ const connection = mysql.createConnection({
 });
 
 connection.connect((err) => {
-
+    if (err) throw err;
+    searchDB();
 });
 
 
@@ -108,7 +109,7 @@ const addRole = () => {
                 type: 'input',
                 message: 'Input new salary amount as a decimal.',
             },
-           
+
         )
         .then((res) => {
             const query = `INSERT INTO roles(title, salary) VALUES ('${res.addTitle},${res.addSalary}')`;
@@ -123,6 +124,34 @@ const addRole = () => {
 
 }
 const updateRole = () => {
+    inquirer
+        .prompt(
+            {
+                name: 'employeeName',
+                type: 'list',
+                message: "Which employee's role would you like to update?",
+                choices: []
+
+            },
+            {
+                name: 'roleUpdate',
+                type: 'list',
+                message: "Which employee's role would you like to update?",
+                choices: []
+
+            },
+        )
+        .then((res) => {
+            const query = `UPDATE role_id SET role_id=${res.roleUpdate} WHERE=${res.employeeName}`;
+            connection.query(query, (err, res) => {
+                console.log('Successfully updated role.');
+                if (err) throw err;
+                cTable(res);
+            })
+        })
+
+
+
 
 }
 const exitProgram = () => {
