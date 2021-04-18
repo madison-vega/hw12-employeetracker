@@ -15,7 +15,7 @@ This app is a console program that allows you to keep track of your business' de
 
 
 ## Installation
-This is a node application that runs in the terminal, so in order to install it you will need to copy the repository to your local machine, and ensure to npm install all the necessary packages required.  You will also need to input your password for MySQL either into the code itself or into a .env folder.  Once that has happened you will need to run the scheme.sql and seeds.sql into MySQL Workbench or equivalent to have the necessary database.
+This is a node application that runs in the terminal, so in order to install it you will need to copy the repository to your local machine, and ensure to npm install all the necessary packages required.  You will also need to input your password, user, and database name for MySQL either into the code itself or into a .env folder.  Once that has happened you will need to run the scheme.sql and seeds.sql into MySQL Workbench or equivalent to have the necessary database.
 
 
 ## Usage 
