@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql');
 const env = require('dotenv');
+const cTable = require('console.table');
 
 
 const connection = mysql.createConnection({
@@ -8,11 +9,11 @@ const connection = mysql.createConnection({
 
     port: 3306,
 
-    user: 'root',
+    user: process.env.DB_USER,
 
     password: process.env.DB_PW,
 
-    database: 'employee_data',
+    database: process.env.DB_NAME,
 
 
 });
@@ -23,14 +24,32 @@ connection.connect((err) => {
 
 
 const viewDepartment = () => {
-    const query = 'SELECT department_names FROM department';
+    const query = 'SELECT * FROM department';
     connection.query(query, (err, res) => {
+        console.log('Showing Departments');
         if (err) throw err;
-        console.table(res);
+        cTable(res);
     });
     searchDB();
 }
-
+const viewEmployees = () => {
+    const query = 'SELECT * FROM employees';
+    connection.query(query, (err, res) => {
+        console.log('Showing Employees');
+        if (err) throw err;
+        cTable(res);
+    });
+    searchDB();
+}
+const viewRoles = () => {
+    const query = 'SELECT * FROM roles';
+    connection.query(query, (err, res) => {
+        console.log('Showing Roles');
+        if (err) throw err;
+        cTable(res);
+    });
+    searchDB();
+}
 
 
 
