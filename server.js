@@ -49,14 +49,77 @@ const viewRoles = () => {
         cTable(res);
     });
     searchDB();
-}
+};
 const addDepartment = () => {
+    inquirer
+        .prompt({
+            name: 'addDept',
+            type: 'input',
+            message: 'Input new department name.',
+        })
+        .then((res) => {
+            const query = `INSERT INTO department(department_names) VALUES ('${res.addDept}')`;
+            connection.query(query, (err, res) => {
+                console.log('Successfully added department.');
+                if (err) throw err;
+                cTable(res);
+            })
 
-}
+        });
+    searchDB();
+};
 const addEmployee = () => {
+    inquirer
+        .prompt(
+            {
+                name: 'addFirst',
+                type: 'input',
+                message: "Input new employee's first name.",
+            },
+            {
+                name: 'addLast',
+                type: 'input',
+                message: "Input new employee's last name.",
+            }
+        )
+        .then((res) => {
+            const query = `INSERT INTO employee(first_name, last_name) VALUES ('${res.addFirst}, ${res.addLast}')`;
+            connection.query(query, (err, res) => {
+                console.log('Successfully added new employee.');
+                if (err) throw err;
+                cTable(res);
+            })
+
+        });
+    searchDB();
+
 
 }
 const addRole = () => {
+    inquirer
+        .prompt(
+            {
+                name: 'addTitle',
+                type: 'input',
+                message: 'Input new role title.',
+            },
+            {
+                name: 'addSalary',
+                type: 'input',
+                message: 'Input new salary amount as a decimal.',
+            },
+           
+        )
+        .then((res) => {
+            const query = `INSERT INTO roles(title, salary) VALUES ('${res.addTitle},${res.addSalary}')`;
+            connection.query(query, (err, res) => {
+                console.log('Successfully added new role.');
+                if (err) throw err;
+                cTable(res);
+            })
+
+        });
+    searchDB();
 
 }
 const updateRole = () => {
