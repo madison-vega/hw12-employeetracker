@@ -1,7 +1,7 @@
 # hw12-employeetracker
 
 ## Description
-
+This app is a console program that allows you to keep track of your business' departments, various roles within that departments, and employees.  It allows you to view your list as well as add and update existing entries.  This helps you keep your information organized and up to date.
 
 
 
@@ -11,19 +11,20 @@
 * [Usage](#usage)
 * [Credits](#credits)
 * [License](#license)
-* [Tests](#tests)
 * [Questions](#questions)
 
 
 ## Installation
-
+This is a node application that runs in the terminal, so in order to install it you will need to copy the repository to your local machine, and ensure to npm install all the necessary packages required.  You will also need to input your password for MySQL either into the code itself or into a .env folder.  Once that has happened you will need to run the scheme.sql and seeds.sql into MySQL Workbench or equivalent to have the necessary database.
 
 
 ## Usage 
+Once all packages are installed and database has been setup, you will run the following in your console "node server.js" and this will initiliaze the application.  You will make selections based on what action you would like to perform and input the requested information.  Once you are done you may exit the application and the information will be input to your table.
 
 
 
 ## Credits
+I utlized MySQL for this as well as the npm packages, Inquirer, dotenv, and console.table.
 
 
 
@@ -50,9 +51,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-
-## Tests
 
 
 
