@@ -20,6 +20,7 @@ const connection = mysql.createConnection({
 
 
 
+
 const viewDepartment = () => {
     const query = 'SELECT * FROM department';
     connection.query(query, (err, res) => {
@@ -119,37 +120,59 @@ const addRole = () => {
     searchDB();
 
 }
+
 const updateRole = () => {
-    inquirer
-        .prompt(
-            {
-                name: 'employeeName',
-                type: 'list',
-                message: "Which employee's role would you like to update?",
-                choices: []
+    const query = 'SELECT * FROM employees';
+    connection.query(query, (err, res) => {
+        console.log('Showing Employees');
+        if (err) throw err;
+        const employees = res.map((id, first_name, last_name, role_id) => ({
+            name: `${first_name} ${last_name}`,
+            id: id,
+            role: role_id,
+            value: res.id
 
-            },
-            {
-                name: 'roleUpdate',
-                type: 'list',
-                message: "Which employee's role would you like to update?",
-                choices: []
+        }))
+    const query = 'SELECT title, id FROM role';
+    connection.query(query, (err, res) => {
+        console.log('Showing Roles');
+        if (err) throw err;
+        const roleUpdate = res.map
 
-            },
-        )
-        .then((res) => {
-            const query = `UPDATE role_id SET role_id=${res.roleUpdate} WHERE=${res.employeeName}`;
-            connection.query(query, (err, res) => {
-                console.log('Successfully updated role.');
-                if (err) throw err;
-                cTable(res);
+
+    })
+
+        inquirer
+            .prompt(
+                {
+                    name: 'employeeName',
+                    type: 'list',
+                    message: "Which employee's role would you like to update?",
+                    choices: employees
+
+                },
+                {
+                    name: 'roleUpdate',
+                    type: 'input',
+                    message: 'What is the new role?'
+
+                }
+            )
+            .then((res) => {
+                const query = `UPDATE role_id SET role_id=${res.roleUpdate} WHERE=${res.employeeName}`;
+                connection.query(query, (err, res) => {
+                    console.log('Successfully updated role.');
+                    if (err) throw err;
+                    cTable(res);
+                })
             })
-        })
 
 
 
 
+    })
 }
+
 const exitProgram = () => {
     console.log('Goodbye!');
     process.exit();
