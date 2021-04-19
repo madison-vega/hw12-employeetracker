@@ -18,10 +18,6 @@ const connection = mysql.createConnection({
 
 });
 
-connection.connect((err) => {
-    if (err) throw err;
-    searchDB();
-});
 
 
 const viewDepartment = () => {
@@ -216,3 +212,7 @@ const searchDB = () => {
 
         })
 }
+connection.connect((err) => {
+    if (err) throw err;
+    searchDB();
+});
