@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql');
-const env = require('dotenv');
+require('dotenv').config();
 const cTable = require('console.table');
 
 
@@ -21,14 +21,15 @@ const connection = mysql.createConnection({
 
 
 
+
 const viewDepartment = () => {
     const query = 'SELECT * FROM department';
     connection.query(query, (err, res) => {
-        console.log('Showing Departments');
         if (err) throw err;
         cTable(res);
+        searchDB();
     });
-    searchDB();
+
 }
 const viewEmployees = () => {
     const query = 'SELECT * FROM employees';
@@ -177,11 +178,6 @@ const exitProgram = () => {
     console.log('Goodbye!');
     process.exit();
 }
-
-
-
-
-
 
 
 
