@@ -27,8 +27,8 @@ const viewDepartment = () => {
     connection.query(query, (err, res) => {
         if (err) throw err;
         console.table(res);
-        searchDB();
     });
+    searchDB();
 
 }
 const viewEmployees = () => {
@@ -37,8 +37,8 @@ const viewEmployees = () => {
         console.log('Showing Employees');
         if (err) throw err;
         console.table(res);
-        searchDB();
     });
+    searchDB();
 }
 const viewRoles = () => {
     const query = 'SELECT * FROM roles';
@@ -46,8 +46,8 @@ const viewRoles = () => {
         console.log('Showing Roles');
         if (err) throw err;
         console.table(res);
-        searchDB();
     });
+    searchDB();
 };
 const addDepartment = () => {
     inquirer
@@ -57,14 +57,16 @@ const addDepartment = () => {
             message: 'Input new department name.',
         })
         .then((res) => {
+            console.log(res)
             const query = `INSERT INTO department(department_names) VALUES ('${res.addDept}')`;
             connection.query(query, (err, res) => {
+                
                 console.log('Successfully added department.');
                 if (err) throw err;
                 console.table(res);
-                searchDB();
             })
-
+            searchDB();
+            
         });
 };
 const addEmployee = () => {
@@ -87,9 +89,9 @@ const addEmployee = () => {
                 console.log('Successfully added new employee.');
                 if (err) throw err;
                 console.table(res);
-                searchDB();
             })
-
+            searchDB();
+            
         });
 
 
@@ -115,9 +117,9 @@ const addRole = () => {
                 console.log('Successfully added new role.');
                 if (err) throw err;
                 console.table(res);
-                searchDB();
             })
-
+            searchDB();
+            
         });
 
 }
@@ -134,7 +136,7 @@ const updateRole = () => {
             value: res.id
 
         }))
-    const query = 'SELECT title, id FROM role';
+    const query = 'SELECT title, id FROM roles';
     connection.query(query, (err, res) => {
         console.log('Showing Roles');
         if (err) throw err;
@@ -200,6 +202,7 @@ const searchDB = () => {
                 'Exit Program'
             ],
         }).then(res => {
+            console.log(res.intro)
             switch (res.intro) {
                 case 'View Departments':
                     viewDepartment();
