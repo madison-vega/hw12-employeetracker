@@ -26,7 +26,7 @@ const viewDepartment = () => {
     const query = 'SELECT * FROM department';
     connection.query(query, (err, res) => {
         if (err) throw err;
-        cTable(res);
+        console.table(res);
         searchDB();
     });
 
@@ -200,7 +200,7 @@ const searchDB = () => {
                 'Exit Program'
             ],
         }).then(res => {
-            switch (res.add) {
+            switch (res.intro) {
                 case 'View Departments':
                     viewDepartment();
                     break;

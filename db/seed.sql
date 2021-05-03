@@ -1,6 +1,6 @@
 -- insert values into tables
 
-INSERT INTO department (department_names) 
+INSERT INTO department (department_names)
 VALUES ('HR');
 INSERT INTO department (department_names) 
 VALUES ('Finance')
