@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql');
 require('dotenv').config();
-const cTable = require('console.table');
+
 
 
 const connection = mysql.createConnection({
@@ -32,11 +32,11 @@ const viewDepartment = () => {
 
 }
 const viewEmployees = () => {
-    const query = 'SELECT * FROM employees';
+    const query = 'SELECT * FROM employee';
     connection.query(query, (err, res) => {
         console.log('Showing Employees');
         if (err) throw err;
-        cTable(res);
+        console.table(res);
     });
     searchDB();
 }
@@ -45,7 +45,7 @@ const viewRoles = () => {
     connection.query(query, (err, res) => {
         console.log('Showing Roles');
         if (err) throw err;
-        cTable(res);
+        console.table(res);
     });
     searchDB();
 };
@@ -61,7 +61,7 @@ const addDepartment = () => {
             connection.query(query, (err, res) => {
                 console.log('Successfully added department.');
                 if (err) throw err;
-                cTable(res);
+                console.table(res);
             })
 
         });
@@ -86,7 +86,7 @@ const addEmployee = () => {
             connection.query(query, (err, res) => {
                 console.log('Successfully added new employee.');
                 if (err) throw err;
-                cTable(res);
+                console.table(res);
             })
 
         });
@@ -114,7 +114,7 @@ const addRole = () => {
             connection.query(query, (err, res) => {
                 console.log('Successfully added new role.');
                 if (err) throw err;
-                cTable(res);
+                console.table(res);
             })
 
         });
@@ -123,7 +123,7 @@ const addRole = () => {
 }
 
 const updateRole = () => {
-    const query = 'SELECT * FROM employees';
+    const query = 'SELECT * FROM employee';
     connection.query(query, (err, res) => {
         console.log('Showing Employees');
         if (err) throw err;
@@ -164,7 +164,7 @@ const updateRole = () => {
                 connection.query(query, (err, res) => {
                     console.log('Successfully updated role.');
                     if (err) throw err;
-                    cTable(res);
+                    console.table(res);
                 })
             })
 
