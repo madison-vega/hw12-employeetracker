@@ -27,8 +27,8 @@ const viewDepartment = () => {
     connection.query(query, (err, res) => {
         if (err) throw err;
         console.table(res);
+        searchDB();
     });
-    searchDB();
 
 }
 const viewEmployees = () => {
@@ -37,8 +37,8 @@ const viewEmployees = () => {
         console.log('Showing Employees');
         if (err) throw err;
         console.table(res);
+        searchDB();
     });
-    searchDB();
 }
 const viewRoles = () => {
     const query = 'SELECT * FROM roles';
@@ -46,8 +46,8 @@ const viewRoles = () => {
         console.log('Showing Roles');
         if (err) throw err;
         console.table(res);
+        searchDB();
     });
-    searchDB();
 };
 const addDepartment = () => {
     inquirer
@@ -62,10 +62,10 @@ const addDepartment = () => {
                 console.log('Successfully added department.');
                 if (err) throw err;
                 console.table(res);
+                searchDB();
             })
 
         });
-    searchDB();
 };
 const addEmployee = () => {
     inquirer
@@ -87,10 +87,10 @@ const addEmployee = () => {
                 console.log('Successfully added new employee.');
                 if (err) throw err;
                 console.table(res);
+                searchDB();
             })
 
         });
-    searchDB();
 
 
 }
@@ -115,10 +115,10 @@ const addRole = () => {
                 console.log('Successfully added new role.');
                 if (err) throw err;
                 console.table(res);
+                searchDB();
             })
 
         });
-    searchDB();
 
 }
 
