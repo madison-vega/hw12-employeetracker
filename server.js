@@ -27,8 +27,8 @@ const viewDepartment = () => {
     connection.query(query, (err, res) => {
         if (err) throw err;
         console.table(res);
-        searchDB();
     });
+    searchDB();
 
 }
 const viewEmployees = () => {
